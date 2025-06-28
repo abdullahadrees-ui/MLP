@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمام اسباق کا کوئز – اردو</title>
+  <style>
+    body {
+      font-family: 'Noto Nastaliq Urdu', 'Arial', sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #333;
+      text-align: right;
+    }
+    .lesson {
+      background: #fff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: right;
+    }
+    .question p {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+    .confirmation {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>تمام اسباق کا کوئز – اردو</h1>
+
+  <div id="all-lessons"></div>
+
+  <script>
+    const quizzes = [
+      {
+        lesson: "سبق 1: سلام و دعا",
+        questions: [
+          { q: "1. آپ صبح کے وقت کس طرح سلام کرتے ہیں؟", options: ["شب بخیر", "صبح بخیر", "خدا حافظ"], name: "q1" },
+          { q: "2. How are you? کے جواب میں کیا کہتے ہیں؟", options: ["میں ٹھیک ہوں، شکریہ!", "نہیں شکریہ۔", "آپ کا نام کیا ہے؟"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 2: ہفتے کے دن",
+        questions: [
+          { q: "1. پیر کے بعد کون سا دن آتا ہے؟", options: ["اتوار", "منگل", "جمعہ"], name: "q1" },
+          { q: "2. ہفتے کا پہلا دن کون سا ہوتا ہے؟", options: ["پیر", "اتوار", "ہفتہ"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 3: عام افعال",
+        questions: [
+          { q: "1. ان میں سے کون سا فعل ہے؟", options: ["دوڑنا", "نیلا", "خوش"], name: "q1" },
+          { q: "2. 'Go' کا ماضی کیا ہے؟", options: ["Go", "Went", "Gone"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 4: خاندان کے افراد",
+        questions: [
+          { q: "1. آپ کی والدہ کی بیٹی آپ کی کیا ہو گی؟", options: ["بہن", "پھوپھی", "بھتیجی"], name: "q1" },
+          { q: "2. آپ کے والد کے بھائی آپ کے کیا ہوں گے؟", options: ["چچا", "کزن", "بھانجا"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 5: رنگ",
+        questions: [
+          { q: "1. صاف دن میں آسمان کا رنگ کیا ہوتا ہے؟", options: ["نیلا", "سرخ", "سبز"], name: "q1" },
+          { q: "2. کیلے کا رنگ کیا ہوتا ہے؟", options: ["پیلا", "جامنی", "نارنجی"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 6: اعداد 1–10",
+        questions: [
+          { q: "1. 3 کے بعد کون سا عدد آتا ہے؟", options: ["2", "4", "5"], name: "q1" },
+          { q: "2. ان میں سے جفت عدد کون سا ہے؟", options: ["1", "3", "4"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 7: عام جملے",
+        questions: [
+          { q: "1. رخصت ہوتے وقت کیا کہتے ہیں؟", options: ["الوداع", "ہیلو", "سلام"] , name: "q1" },
+          { q: "2. کسی کا شکریہ ادا کرنے کے لیے کیا کہتے ہیں؟", options: ["براہ کرم", "معاف کیجیے", "شکریہ"] , name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 8: کھانے اور مشروبات",
+        questions: [
+          { q: "1. ان میں سے پھل کون سا ہے؟", options: ["گاجر", "سیب", "بروکلی"] , name: "q1" },
+          { q: "2. صبح کے وقت آپ کیا پیتے ہیں؟", options: ["چائے", "روٹی", "چاول"] , name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 9: کپڑے",
+        questions: [
+          { q: "1. آپ پاؤں میں کیا پہنتے ہیں؟", options: ["جوتے", "قمیض", "ٹوپی"] , name: "q1" },
+          { q: "2. آپ سر پر کیا پہنتے ہیں؟", options: ["پتلون", "ٹوپی", "موزے"] , name: "q2" }
+        ]
+      },
+      {
+        lesson: "سبق 10: موسم",
+        questions: [
+          { q: "1. بارش میں آپ کیا ساتھ لے کر جاتے ہیں؟", options: ["چھتری", "عینک", "مفلر"] , name: "q1" },
+          { q: "2. کون سا موسم گرم اور دھوپ دار ہوتا ہے؟", options: ["سردی", "گرمی", "خزاں"] , name: "q2" }
+        ]
+      }
+    ];
+
+    const container = document.getElementById("all-lessons");
+
+    quizzes.forEach((lesson, index) => {
+      const formId = `quiz-${index}`;
+      const form = document.createElement("form");
+      form.id = formId;
+      form.className = "lesson";
+
+      const title = document.createElement("h2");
+      title.innerText = lesson.lesson;
+      form.appendChild(title);
+
+      lesson.questions.forEach((q) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        const p = document.createElement("p");
+        p.innerText = q.q;
+        div.appendChild(p);
+
+        q.options.forEach((opt) => {
+          const label = document.createElement("label");
+          label.innerHTML = `<input type='radio' name='${q.name}' value='${opt}'> ${opt}`;
+          div.appendChild(label);
+        });
+
+        form.appendChild(div);
+      });
+
+      const btn = document.createElement("button");
+      btn.type = "submit";
+      btn.innerText = "جمع کروائیں";
+      form.appendChild(btn);
+
+      const confirm = document.createElement("div");
+      confirm.className = "confirmation";
+      confirm.id = `confirm-${formId}`;
+      form.appendChild(confirm);
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const answers = {};
+        lesson.questions.forEach((q) => {
+          answers[q.name] = form.querySelector(`input[name='${q.name}']:checked`)?.value || '';
+        });
+        localStorage.setItem(`urdu_${formId}_answers`, JSON.stringify(answers));
+        document.getElementById(`confirm-${formId}`).innerText = "✅ آپ کے جوابات محفوظ کر لیے گئے ہیں!";
+      });
+
+      container.appendChild(form);
+    });
+  </script>
+</body>
+</html>

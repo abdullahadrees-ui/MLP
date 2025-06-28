@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz de Leçons – Français</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #333;
+    }
+    .lesson {
+      background: #fff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question p {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+    .confirmation {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz Leçons 1 à 10 – Français</h1>
+  <div id="all-lessons"></div>
+  <script>
+    const quizzes = [
+      {
+        lesson: "Leçon 1 : Salutations et Présentations",
+        questions: [
+          { q: "1. Comment saluez-vous quelqu’un le matin ?", options: ["Bonne nuit", "Bonjour", "Au revoir"], name: "q1" },
+          { q: "2. Que répondez-vous à ‘How are you?’", options: ["Je vais bien, merci !", "Non merci.", "Comment vous appelez-vous ?"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 2 : Jours de la semaine",
+        questions: [
+          { q: "1. Quel jour vient après lundi ?", options: ["Dimanche", "Mardi", "Vendredi"], name: "q1" },
+          { q: "2. Quel est le premier jour de la semaine ?", options: ["Lundi", "Dimanche", "Samedi"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 3 : Verbes courants",
+        questions: [
+          { q: "1. Lequel de ces mots est un verbe ?", options: ["Courir", "Bleu", "Heureux"], name: "q1" },
+          { q: "2. Quel est le passé de 'aller' ?", options: ["Aller", "Allé", "Allait"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 4 : Membres de la famille",
+        questions: [
+          { q: "1. La fille de votre mère est votre...", options: ["Sœur", "Tante", "Nièce"], name: "q1" },
+          { q: "2. Le frère de votre père est votre...", options: ["Oncle", "Cousin", "Neveu"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 5 : Couleurs",
+        questions: [
+          { q: "1. Quelle est la couleur du ciel par temps clair ?", options: ["Bleu", "Rouge", "Vert"], name: "q1" },
+          { q: "2. Quelle est la couleur d'une banane ?", options: ["Jaune", "Violet", "Orange"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 6 : Nombres 1–10",
+        questions: [
+          { q: "1. Quel chiffre vient après 3 ?", options: ["2", "4", "5"], name: "q1" },
+          { q: "2. Lequel est un nombre pair ?", options: ["1", "3", "4"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 7 : Phrases courantes",
+        questions: [
+          { q: "1. Que dites-vous en partant ?", options: ["Au revoir", "Bonjour", "Salut"], name: "q1" },
+          { q: "2. Comment remerciez-vous quelqu’un ?", options: ["S’il vous plaît", "Pardon", "Merci"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 8 : Nourriture et Boisson",
+        questions: [
+          { q: "1. Lequel est un fruit ?", options: ["Carotte", "Pomme", "Brocoli"], name: "q1" },
+          { q: "2. Que buvez-vous le matin ?", options: ["Thé", "Pain", "Riz"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 9 : Vêtements",
+        questions: [
+          { q: "1. Que portez-vous aux pieds ?", options: ["Chaussures", "Chemise", "Chapeau"], name: "q1" },
+          { q: "2. Que portez-vous sur la tête ?", options: ["Pantalon", "Chapeau", "Chaussettes"], name: "q2" }
+        ]
+      },
+      {
+        lesson: "Leçon 10 : Météo",
+        questions: [
+          { q: "1. Que portez-vous quand il pleut ?", options: ["Parapluie", "Lunettes de soleil", "Écharpe"], name: "q1" },
+          { q: "2. Quelle saison est chaude et ensoleillée ?", options: ["Hiver", "Été", "Automne"], name: "q2" }
+        ]
+      }
+    ];
+
+    const container = document.getElementById("all-lessons");
+
+    quizzes.forEach((lesson, index) => {
+      const formId = `quiz-${index}`;
+      const form = document.createElement("form");
+      form.id = formId;
+      form.className = "lesson";
+
+      const title = document.createElement("h2");
+      title.innerText = lesson.lesson;
+      form.appendChild(title);
+
+      lesson.questions.forEach((q) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        const p = document.createElement("p");
+        p.innerText = q.q;
+        div.appendChild(p);
+
+        q.options.forEach((opt) => {
+          const label = document.createElement("label");
+          label.innerHTML = `<input type='radio' name='${q.name}' value='${opt}'> ${opt}`;
+          div.appendChild(label);
+        });
+
+        form.appendChild(div);
+      });
+
+      const btn = document.createElement("button");
+      btn.type = "submit";
+      btn.innerText = "Soumettre";
+      form.appendChild(btn);
+
+      const confirm = document.createElement("div");
+      confirm.className = "confirmation";
+      confirm.id = `confirm-${formId}`;
+      form.appendChild(confirm);
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const answers = {};
+        lesson.questions.forEach((q) => {
+          answers[q.name] = form.querySelector(`input[name='${q.name}']:checked`)?.value || '';
+        });
+        localStorage.setItem(`french_${formId}_answers`, JSON.stringify(answers));
+        document.getElementById(`confirm-${formId}`).innerText = "✅ Vos réponses ont été enregistrées !";
+      });
+
+      container.appendChild(form);
+    });
+  </script>
+</body>
+</html>

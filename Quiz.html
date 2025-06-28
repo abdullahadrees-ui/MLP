@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Quizzes - All Lessons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      color: #333;
+    }
+    .lesson {
+      background: #fff;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .question p {
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+    }
+    .confirmation {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>English Quizzes – Lessons 1 to 10</h1>
+
+  <div id="all-lessons"></div>
+
+  <script>
+    const quizzes = [
+      {
+        lesson: "Lesson 1: Greetings and Introductions",
+        questions: [
+          {
+            q: "1. How do you greet someone in the morning?",
+            options: ["Good night", "Good morning", "Bye"],
+            name: "q1"
+          },
+          {
+            q: "2. What do you say after 'How are you?'",
+            options: ["I am fine, thank you!", "No, thank you.", "What's your name?"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 2: Days of the Week",
+        questions: [
+          {
+            q: "1. Which day comes after Monday?",
+            options: ["Sunday", "Tuesday", "Friday"],
+            name: "q1"
+          },
+          {
+            q: "2. What is the first day of the week?",
+            options: ["Monday", "Sunday", "Saturday"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 3: Common Verbs",
+        questions: [
+          {
+            q: "1. Which of the following is a verb?",
+            options: ["Run", "Blue", "Happy"],
+            name: "q1"
+          },
+          {
+            q: "2. What is the past tense of 'go'?",
+            options: ["Go", "Went", "Gone"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 4: Family Members",
+        questions: [
+          {
+            q: "1. Your mother's daughter is your...",
+            options: ["Sister", "Aunt", "Niece"],
+            name: "q1"
+          },
+          {
+            q: "2. Your father's brother is your...",
+            options: ["Uncle", "Cousin", "Nephew"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 5: Colors",
+        questions: [
+          {
+            q: "1. What color is the sky on a clear day?",
+            options: ["Blue", "Red", "Green"],
+            name: "q1"
+          },
+          {
+            q: "2. What color are bananas?",
+            options: ["Yellow", "Purple", "Orange"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 6: Numbers 1–10",
+        questions: [
+          {
+            q: "1. What number comes after 3?",
+            options: ["2", "4", "5"],
+            name: "q1"
+          },
+          {
+            q: "2. Which of these is an even number?",
+            options: ["1", "3", "4"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 7: Common Phrases",
+        questions: [
+          {
+            q: "1. What do you say when leaving?",
+            options: ["Bye", "Hi", "Hello"],
+            name: "q1"
+          },
+          {
+            q: "2. How do you thank someone?",
+            options: ["Please", "Sorry", "Thank you"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 8: Food and Drink",
+        questions: [
+          {
+            q: "1. Which one is a fruit?",
+            options: ["Carrot", "Apple", "Broccoli"],
+            name: "q1"
+          },
+          {
+            q: "2. What do you drink in the morning?",
+            options: ["Tea", "Bread", "Rice"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 9: Clothing",
+        questions: [
+          {
+            q: "1. What do you wear on your feet?",
+            options: ["Shoes", "Shirt", "Hat"],
+            name: "q1"
+          },
+          {
+            q: "2. What do you wear on your head?",
+            options: ["Pants", "Hat", "Socks"],
+            name: "q2"
+          }
+        ]
+      },
+      {
+        lesson: "Lesson 10: Weather",
+        questions: [
+          {
+            q: "1. What do you carry when it rains?",
+            options: ["Umbrella", "Sunglasses", "Scarf"],
+            name: "q1"
+          },
+          {
+            q: "2. What season is hot and sunny?",
+            options: ["Winter", "Summer", "Autumn"],
+            name: "q2"
+          }
+        ]
+      }
+    ];
+
+    const container = document.getElementById("all-lessons");
+
+    quizzes.forEach((lesson, index) => {
+      const formId = `quiz-${index}`;
+      const form = document.createElement("form");
+      form.id = formId;
+      form.className = "lesson";
+
+      const title = document.createElement("h2");
+      title.innerText = lesson.lesson;
+      form.appendChild(title);
+
+      lesson.questions.forEach((q, i) => {
+        const div = document.createElement("div");
+        div.className = "question";
+
+        const p = document.createElement("p");
+        p.innerText = q.q;
+        div.appendChild(p);
+
+        q.options.forEach((opt, j) => {
+          const label = document.createElement("label");
+          label.innerHTML = `<input type="radio" name="${q.name}" value="${opt}"> ${opt}`;
+          div.appendChild(label);
+        });
+
+        form.appendChild(div);
+      });
+
+      const btn = document.createElement("button");
+      btn.type = "submit";
+      btn.innerText = "Submit";
+      form.appendChild(btn);
+
+      const confirm = document.createElement("div");
+      confirm.className = "confirmation";
+      confirm.id = `confirm-${formId}`;
+      form.appendChild(confirm);
+
+      form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const answers = {};
+        lesson.questions.forEach((q) => {
+          answers[q.name] = form.querySelector(`input[name='${q.name}']:checked`)?.value || '';
+        });
+        localStorage.setItem(`english_${formId}_answers`, JSON.stringify(answers));
+        document.getElementById(`confirm-${formId}`).innerText = "✅ Your answers have been saved!";
+      });
+
+      container.appendChild(form);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>انگریزی سبق - مکمل ماڈیول</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: 'Noto Nastaliq Urdu', 'Arial', sans-serif; padding: 20px; max-width: 800px; margin: auto; direction: rtl; }
+    h1, h2, h3 { color: #2c3e50; }
+    section { margin-bottom: 40px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+    ul { list-style-type: disc; padding-right: 20px; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
+    .result { color: green; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>انگریزی زبان سیکھنے کا ماڈیول - ۱۰ اسباق</h1>
+
+  <script>
+    const lessons = [
+      {
+        title: "سلام اور تعارف",
+        content: ["ہیلو!", "سلام!", "صبح بخیر / دوپہر بخیر / شام بخیر", "آپ کیسے ہیں؟", "میں ٹھیک ہوں، شکریہ!"],
+        intro: ["میرا نام علی ہے۔", "میں ایک طالبعلم ہوں۔"],
+        quiz: [
+          { q: "آپ صبح میں کس طرح سلام کرتے ہیں؟", options: ["شب بخیر", "صبح بخیر", "خدا حافظ"], correct: "b" },
+          { q: "جب کوئی کہے 'آپ کیسے ہیں؟' تو آپ کیا کہتے ہیں؟", options: ["میں ٹھیک ہوں، شکریہ!", "نہیں، شکریہ۔", "آپ کا نام کیا ہے؟"], correct: "a" }
+        ]
+      },
+      {
+        title: "ہفتے کے دن",
+        content: ["پیر", "منگل", "بدھ", "جمعرات", "جمعہ", "ہفتہ", "اتوار"],
+        intro: [],
+        quiz: [
+          { q: "منگل کے بعد کون سا دن آتا ہے؟", options: ["پیر", "بدھ", "جمعرات"], correct: "b" },
+          { q: "ہفتہ کا کون سا دن چھٹی ہوتا ہے؟", options: ["جمعہ", "ہفتہ", "پیر"], correct: "b" }
+        ]
+      },
+      {
+        title: "عام افعال",
+        content: ["جانا", "کھانا", "پینا", "سونا", "پڑھنا", "لکھنا"],
+        intro: ["میں ایک سیب کھاتا ہوں۔", "وہ کتابیں پڑھتے ہیں۔"],
+        quiz: [
+          { q: "ان میں سے کون سا فعل ہے؟", options: ["سیب", "جانا", "سرخ"], correct: "b" },
+          { q: "رات کو آرام کرنے کے لیے کون سا فعل استعمال ہوتا ہے؟", options: ["سونا", "لکھنا", "پینا"], correct: "a" }
+        ]
+      },
+      {
+        title: "خاندانی رشتے",
+        content: ["ماں", "باپ", "بھائی", "بہن", "دادی", "دادا"],
+        intro: ["یہ میرے والد ہیں۔", "وہ میری بہن ہے۔"],
+        quiz: [
+          { q: "آپ کے والد کے والد کو کیا کہتے ہیں؟", options: ["بھائی", "دادا", "چچا"], correct: "b" },
+          { q: "آپ کی ماں کی بیٹی کون ہے؟", options: ["بہن", "خالہ", "کزن"], correct: "a" }
+        ]
+      },
+      {
+        title: "رنگ",
+        content: ["سرخ", "نیلا", "سبز", "پیلا", "کالا", "سفید"],
+        intro: ["آسمان نیلا ہے۔", "کیلا پیلا ہوتا ہے۔"],
+        quiz: [
+          { q: "گھاس کا رنگ کیا ہوتا ہے؟", options: ["سبز", "سرخ", "سفید"], correct: "a" },
+          { q: "سورج کا رنگ کیا ہے؟", options: ["نیلا", "پیلا", "کالا"], correct: "b" }
+        ]
+      },
+      {
+        title: "نمبر 1 سے 10",
+        content: ["ایک", "دو", "تین", "چار", "پانچ", "چھ", "سات", "آٹھ", "نو", "دس"],
+        intro: ["میرے پاس دو کتابیں ہیں۔", "وہ پانچ سال کی ہے۔"],
+        quiz: [
+          { q: "چار کے بعد کون آتا ہے؟", options: ["تین", "پانچ", "چھ"], correct: "b" },
+          { q: "ان میں سے سب سے چھوٹا نمبر کون سا ہے؟", options: ["ایک", "دس", "چھ"], correct: "a" }
+        ]
+      },
+      {
+        title: "عام جملے",
+        content: ["شکریہ", "کوئی بات نہیں", "معاف کیجیے گا", "معذرت", "براہ مہربانی"],
+        intro: ["آپ کی مدد کا شکریہ۔", "معاف کیجیے گا، بس اسٹاپ کہاں ہے؟"],
+        quiz: [
+          { q: "جب کوئی آپ کی مدد کرے تو آپ کیا کہتے ہیں؟", options: ["معذرت", "شکریہ", "براہ مہربانی"], correct: "b" },
+          { q: "توجہ حاصل کرنے کے لیے کیا کہتے ہیں؟", options: ["کوئی بات نہیں", "معاف کیجیے گا", "نہیں"], correct: "b" }
+        ]
+      },
+      {
+        title: "خوراک اور مشروبات",
+        content: ["سیب", "کیلا", "پانی", "دودھ", "روٹی", "چاول"],
+        intro: ["میں پانی پیتا ہوں۔", "وہ سیب کھاتا ہے۔"],
+        quiz: [
+          { q: "ان میں سے کون سا پھل ہے؟", options: ["پانی", "کیلا", "چاول"], correct: "b" },
+          { q: "آپ کیا پیتے ہیں؟", options: ["دودھ", "روٹی", "سیب"], correct: "a" }
+        ]
+      },
+      {
+        title: "کپڑے",
+        content: ["قمیض", "پتلون", "جوتے", "ٹوپی", "پوشاک", "جیکٹ"],
+        intro: ["میں جیکٹ پہن رہا ہوں۔", "وہ سرخ پوشاک پہنے ہوئے ہے۔"],
+        quiz: [
+          { q: "آپ سر پر کیا پہنتے ہیں؟", options: ["جوتے", "ٹوپی", "پتلون"], correct: "b" },
+          { q: "آپ پاؤں پر کیا پہنتے ہیں؟", options: ["ٹوپی", "جوتے", "قمیض"], correct: "b" }
+        ]
+      },
+      {
+        title: "موسم",
+        content: ["دھوپ", "بارش", "بادل", "ہوا", "برفباری", "گرمی", "سردی"],
+        intro: ["آج دھوپ ہے۔", "موسم سرد ہے۔"],
+        quiz: [
+          { q: "جب سورج چمک رہا ہو تو موسم کیسا ہوتا ہے؟", options: ["برفباری", "دھوپ", "ہوا"], correct: "b" },
+          { q: "کون سا موسم بہت ٹھنڈا ہوتا ہے؟", options: ["گرمی", "بارش", "برفباری"], correct: "c" }
+        ]
+      }
+    ];
+  </script>
+
+  <div id="lessons-container"></div>
+
+  <script>
+    function generateLessons() {
+      const container = document.getElementById('lessons-container');
+      lessons.forEach((lesson, index) => {
+        const section = document.createElement('section');
+        section.innerHTML = `
+          <h2>سبق ${index + 1}: ${lesson.title}</h2>
+          <p>اہم الفاظ:</p>
+          <ul>${lesson.content.map(word => `<li>${word}</li>`).join('')}</ul>
+          ${lesson.intro.length ? `<p>مثالیں:</p><ul>${lesson.intro.map(s => `<li>${s}</li>`).join('')}</ul>` : ""}
+          <h3>کوئز: ${lesson.title}</h3>
+          <form id="quiz-${index}">
+            ${lesson.quiz.map((q, qi) => `
+              <p>${qi + 1}. ${q.q}</p>
+              ${q.options.map((opt, oi) => `
+                <input type="radio" name="q${qi}" value="${String.fromCharCode(97 + oi)}"> ${opt}<br>
+              `).join('')}
+            `).join('<br>')}
+            <button type="submit">جمع کریں</button>
+          </form>
+          <div class="result" id="result-${index}"></div>
+        `;
+        container.appendChild(section);
+
+        document.getElementById(`quiz-${index}`).addEventListener('submit', function(e) {
+          e.preventDefault();
+          const responses = {};
+          lesson.quiz.forEach((q, qi) => {
+            const selected = document.querySelector(`#quiz-${index} input[name="q${qi}"]:checked`);
+            responses[`q${qi}`] = selected ? selected.value : '';
+          });
+          localStorage.setItem(`lesson${index + 1}_answers`, JSON.stringify(responses));
+          document.getElementById(`result-${index}`).innerText = "آپ کے جوابات محفوظ ہو گئے ہیں!";
+        });
+      });
+    }
+    generateLessons();
+  </script>
+</body>
+</html>

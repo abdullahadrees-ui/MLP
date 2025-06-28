@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leçons d'anglais - Module complet</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; direction: ltr; }
+    h1, h2, h3 { color: #2c3e50; }
+    section { margin-bottom: 40px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+    ul { list-style-type: disc; padding-left: 20px; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
+    .result { color: green; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Module d'apprentissage de l'anglais – 10 Leçons</h1>
+
+  <script>
+    const lessons = [
+      {
+        title: "Salutations et Présentations",
+        content: ["Bonjour !", "Salut !", "Bon matin / Bon après-midi / Bonsoir", "Comment ça va ?", "Je vais bien, merci !"],
+        intro: ["Je m'appelle Ali.", "Je suis étudiant."],
+        quiz: [
+          { q: "Comment saluer quelqu’un le matin ?", options: ["Bonne nuit", "Bon matin", "Au revoir"], correct: "b" },
+          { q: "Que répondez-vous à « Comment ça va ? »", options: ["Je vais bien, merci !", "Non, merci.", "Comment tu t'appelles ?"], correct: "a" }
+        ]
+      },
+      {
+        title: "Jours de la Semaine",
+        content: ["Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi", "Dimanche"],
+        intro: [],
+        quiz: [
+          { q: "Quel jour vient après mardi ?", options: ["Lundi", "Mercredi", "Jeudi"], correct: "b" },
+          { q: "Quel jour est le week-end ?", options: ["Vendredi", "Samedi", "Lundi"], correct: "b" }
+        ]
+      },
+      {
+        title: "Verbes Courants",
+        content: ["Aller", "Manger", "Boire", "Dormir", "Lire", "Écrire"],
+        intro: ["Je mange une pomme.", "Ils lisent des livres."],
+        quiz: [
+          { q: "Lequel est un verbe ?", options: ["Pomme", "Aller", "Rouge"], correct: "b" },
+          { q: "Quel verbe signifie se reposer la nuit ?", options: ["Dormir", "Écrire", "Boire"], correct: "a" }
+        ]
+      },
+      {
+        title: "Membres de la Famille",
+        content: ["Mère", "Père", "Frère", "Sœur", "Grand-mère", "Grand-père"],
+        intro: ["Voici mon père.", "C’est ma sœur."],
+        quiz: [
+          { q: "Qui est le père de votre père ?", options: ["Frère", "Grand-père", "Oncle"], correct: "b" },
+          { q: "Qui est la fille de votre mère ?", options: ["Sœur", "Tante", "Cousine"], correct: "a" }
+        ]
+      },
+      {
+        title: "Couleurs",
+        content: ["Rouge", "Bleu", "Vert", "Jaune", "Noir", "Blanc"],
+        intro: ["Le ciel est bleu.", "Les bananes sont jaunes."],
+        quiz: [
+          { q: "Quelle est la couleur de l'herbe ?", options: ["Vert", "Rouge", "Blanc"], correct: "a" },
+          { q: "Quelle est la couleur du soleil ?", options: ["Bleu", "Jaune", "Noir"], correct: "b" }
+        ]
+      },
+      {
+        title: "Nombres de 1 à 10",
+        content: ["Un", "Deux", "Trois", "Quatre", "Cinq", "Six", "Sept", "Huit", "Neuf", "Dix"],
+        intro: ["J’ai deux livres.", "Elle a cinq ans."],
+        quiz: [
+          { q: "Quel nombre vient après quatre ?", options: ["Trois", "Cinq", "Six"], correct: "b" },
+          { q: "Quel est le plus petit nombre ?", options: ["Un", "Dix", "Six"], correct: "a" }
+        ]
+      },
+      {
+        title: "Phrases Courantes",
+        content: ["Merci", "De rien", "Excusez-moi", "Pardon", "S’il vous plaît"],
+        intro: ["Merci pour votre aide.", "Excusez-moi, où est l’arrêt de bus ?"],
+        quiz: [
+          { q: "Que dites-vous quand quelqu’un vous aide ?", options: ["Pardon", "Merci", "S’il vous plaît"], correct: "b" },
+          { q: "Que dites-vous pour attirer l’attention ?", options: ["De rien", "Excusez-moi", "Non"], correct: "b" }
+        ]
+      },
+      {
+        title: "Nourriture et Boissons",
+        content: ["Pomme", "Banane", "Eau", "Lait", "Pain", "Riz"],
+        intro: ["Je bois de l’eau.", "Il mange une pomme."],
+        quiz: [
+          { q: "Lequel est un fruit ?", options: ["Eau", "Banane", "Riz"], correct: "b" },
+          { q: "Que bois-tu ?", options: ["Lait", "Pain", "Pomme"], correct: "a" }
+        ]
+      },
+      {
+        title: "Vêtements",
+        content: ["Chemise", "Pantalon", "Chaussures", "Chapeau", "Robe", "Veste"],
+        intro: ["Je porte une veste.", "Elle porte une robe rouge."],
+        quiz: [
+          { q: "Que mettez-vous sur la tête ?", options: ["Chaussures", "Chapeau", "Pantalon"], correct: "b" },
+          { q: "Que portez-vous aux pieds ?", options: ["Chapeau", "Chaussures", "Chemise"], correct: "b" }
+        ]
+      },
+      {
+        title: "Météo",
+        content: ["Ensoleillé", "Pluvieux", "Nuageux", "Venteux", "Neigeux", "Chaud", "Froid"],
+        intro: ["Il fait ensoleillé aujourd’hui.", "Il fait froid."],
+        quiz: [
+          { q: "Quel temps fait-il quand il y a du soleil ?", options: ["Neigeux", "Ensoleillé", "Venteux"], correct: "b" },
+          { q: "Quel temps est très froid ?", options: ["Chaud", "Pluvieux", "Neigeux"], correct: "c" }
+        ]
+      }
+    ];
+  </script>
+
+  <div id="lessons-container"></div>
+
+  <script>
+    function generateLessons() {
+      const container = document.getElementById('lessons-container');
+      lessons.forEach((lesson, index) => {
+        const section = document.createElement('section');
+        section.innerHTML = `
+          <h2>Leçon ${index + 1} : ${lesson.title}</h2>
+          <p>Vocabulaire clé :</p>
+          <ul>${lesson.content.map(word => `<li>${word}</li>`).join('')}</ul>
+          ${lesson.intro.length ? `<p>Exemples :</p><ul>${lesson.intro.map(s => `<li>${s}</li>`).join('')}</ul>` : ""}
+          <h3>Quiz : ${lesson.title}</h3>
+          <form id="quiz-${index}">
+            ${lesson.quiz.map((q, qi) => `
+              <p>${qi + 1}. ${q.q}</p>
+              ${q.options.map((opt, oi) => `
+                <input type="radio" name="q${qi}" value="${String.fromCharCode(97 + oi)}"> ${opt}<br>
+              `).join('')}
+            `).join('<br>')}
+            <button type="submit">Soumettre</button>
+          </form>
+          <div class="result" id="result-${index}"></div>
+        `;
+        container.appendChild(section);
+
+        document.getElementById(`quiz-${index}`).addEventListener('submit', function(e) {
+          e.preventDefault();
+          const responses = {};
+          lesson.quiz.forEach((q, qi) => {
+            const selected = document.querySelector(`#quiz-${index} input[name="q${qi}"]:checked`);
+            responses[`q${qi}`] = selected ? selected.value : '';
+          });
+          localStorage.setItem(`lecon${index + 1}_reponses`, JSON.stringify(responses));
+          document.getElementById(`result-${index}`).innerText = "Vos réponses ont été enregistrées !";
+        });
+      });
+    }
+    generateLessons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>English Lessons - Full Module</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
+    h1, h2, h3 { color: #2c3e50; }
+    section { margin-bottom: 40px; border-bottom: 1px solid #ccc; padding-bottom: 20px; }
+    ul { list-style-type: disc; padding-left: 20px; }
+    button { margin-top: 10px; padding: 10px 20px; font-size: 16px; }
+    .result { color: green; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>English Language Learning Module - 10 Lessons</h1>
+
+  <!-- Template for Lessons -->
+  <script>
+    const lessons = [
+      {
+        title: "Greetings and Introductions",
+        content: [
+          "Hello!",
+          "Hi!",
+          "Good morning / Good afternoon / Good evening",
+          "How are you?",
+          "I am fine, thank you!"
+        ],
+        intro: [
+          "My name is Ali.",
+          "I am a student."
+        ],
+        quiz: [
+          { q: "How do you greet someone in the morning?", options: ["Good night", "Good morning", "Bye"], correct: "b" },
+          { q: "What do you say after someone says “How are you?”", options: ["I am fine, thank you!", "No, thank you.", "What's your name?"], correct: "a" }
+        ]
+      },
+      {
+        title: "Days of the Week",
+        content: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        intro: [],
+        quiz: [
+          { q: "What day comes after Tuesday?", options: ["Monday", "Wednesday", "Thursday"], correct: "b" },
+          { q: "Which day is the weekend?", options: ["Friday", "Saturday", "Monday"], correct: "b" }
+        ]
+      },
+      {
+        title: "Common Verbs",
+        content: ["Go", "Eat", "Drink", "Sleep", "Read", "Write"],
+        intro: ["I eat an apple.", "They read books."],
+        quiz: [
+          { q: "Which word is a verb?", options: ["Apple", "Go", "Red"], correct: "b" },
+          { q: "Which verb means to rest at night?", options: ["Sleep", "Write", "Drink"], correct: "a" }
+        ]
+      },
+      {
+        title: "Family Members",
+        content: ["Mother", "Father", "Brother", "Sister", "Grandmother", "Grandfather"],
+        intro: ["This is my father.", "She is my sister."],
+        quiz: [
+          { q: "Who is your father's father?", options: ["Brother", "Grandfather", "Uncle"], correct: "b" },
+          { q: "Who is your mother's daughter?", options: ["Sister", "Aunt", "Cousin"], correct: "a" }
+        ]
+      },
+      {
+        title: "Colors",
+        content: ["Red", "Blue", "Green", "Yellow", "Black", "White"],
+        intro: ["The sky is blue.", "Bananas are yellow."],
+        quiz: [
+          { q: "What color is grass?", options: ["Green", "Red", "White"], correct: "a" },
+          { q: "What color is the sun?", options: ["Blue", "Yellow", "Black"], correct: "b" }
+        ]
+      },
+      {
+        title: "Numbers 1-10",
+        content: ["One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"],
+        intro: ["I have two books.", "She is five years old."],
+        quiz: [
+          { q: "What comes after four?", options: ["Three", "Five", "Six"], correct: "b" },
+          { q: "Which number is smallest?", options: ["One", "Ten", "Six"], correct: "a" }
+        ]
+      },
+      {
+        title: "Common Phrases",
+        content: ["Thank you", "You're welcome", "Excuse me", "Sorry", "Please"],
+        intro: ["Thank you for your help.", "Excuse me, where is the bus stop?"],
+        quiz: [
+          { q: "What do you say when someone helps you?", options: ["Sorry", "Thank you", "Please"], correct: "b" },
+          { q: "What do you say to get attention?", options: ["You're welcome", "Excuse me", "No"], correct: "b" }
+        ]
+      },
+      {
+        title: "Food and Drink",
+        content: ["Apple", "Banana", "Water", "Milk", "Bread", "Rice"],
+        intro: ["I drink water.", "He eats an apple."],
+        quiz: [
+          { q: "Which of these is a fruit?", options: ["Water", "Banana", "Rice"], correct: "b" },
+          { q: "What do you drink?", options: ["Milk", "Bread", "Apple"], correct: "a" }
+        ]
+      },
+      {
+        title: "Clothing",
+        content: ["Shirt", "Pants", "Shoes", "Hat", "Dress", "Jacket"],
+        intro: ["I am wearing a jacket.", "She has a red dress."],
+        quiz: [
+          { q: "What do you wear on your head?", options: ["Shoes", "Hat", "Pants"], correct: "b" },
+          { q: "What do you wear on your feet?", options: ["Hat", "Shoes", "Shirt"], correct: "b" }
+        ]
+      },
+      {
+        title: "Weather",
+        content: ["Sunny", "Rainy", "Cloudy", "Windy", "Snowy", "Hot", "Cold"],
+        intro: ["It is sunny today.", "The weather is cold."],
+        quiz: [
+          { q: "What is the weather when the sun is shining?", options: ["Snowy", "Sunny", "Windy"], correct: "b" },
+          { q: "What weather is freezing?", options: ["Hot", "Rainy", "Snowy"], correct: "c" }
+        ]
+      }
+    ];
+  </script>
+
+  <!-- Lesson Generator -->
+  <div id="lessons-container"></div>
+
+  <script>
+    function generateLessons() {
+      const container = document.getElementById('lessons-container');
+      lessons.forEach((lesson, index) => {
+        const section = document.createElement('section');
+        section.innerHTML = `
+          <h2>Lesson ${index + 1}: ${lesson.title}</h2>
+          <p>Key Vocabulary:</p>
+          <ul>${lesson.content.map(word => `<li>${word}</li>`).join('')}</ul>
+          ${lesson.intro.length ? `<p>Examples:</p><ul>${lesson.intro.map(s => `<li>${s}</li>`).join('')}</ul>` : ""}
+          <h3>Quiz: ${lesson.title}</h3>
+          <form id="quiz-${index}">
+            ${lesson.quiz.map((q, qi) => `
+              <p>${qi + 1}. ${q.q}</p>
+              ${q.options.map((opt, oi) => `
+                <input type="radio" name="q${qi}" value="${String.fromCharCode(97 + oi)}"> ${opt}<br>
+              `).join('')}
+            `).join('<br>')}
+            <button type="submit">Submit</button>
+          </form>
+          <div class="result" id="result-${index}"></div>
+        `;
+        container.appendChild(section);
+
+        document.getElementById(`quiz-${index}`).addEventListener('submit', function(e) {
+          e.preventDefault();
+          const responses = {};
+          lesson.quiz.forEach((q, qi) => {
+            const selected = document.querySelector(`#quiz-${index} input[name="q${qi}"]:checked`);
+            responses[`q${qi}`] = selected ? selected.value : '';
+          });
+          localStorage.setItem(`lesson${index + 1}_answers`, JSON.stringify(responses));
+          document.getElementById(`result-${index}`).innerText = "Your answers have been saved!";
+        });
+      });
+    }
+    generateLessons();
+  </script>
+</body>
+</html>

@@ -1,0 +1,277 @@
+/* Basic Reset */
+body {
+    background-color: rgb(44, 142, 175);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Global Styles */
+body {
+    font-family: 'Aptos', sans-serif;
+    color: #000000;
+    line-height: 1.6;
+}
+
+h1, h2 {
+    color: #000000;
+}
+
+/* Header and Navigation Bar */
+header {
+    background-color: #ffffffee;
+    padding: 30px 150px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+nav .logo a {
+    color: rgb(0, 0, 0);
+    font-size: 28px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+nav .nav-links {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+
+nav .nav-links li {
+    display: inline;
+    margin-left: 25px;
+}
+
+nav .nav-links a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+nav .language-select {
+    position: relative;
+}
+
+nav .language-select a {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+nav .language-select .dropdown {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    background-color: #ffffff;
+    width: 150px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    list-style-type: none;
+    padding: 0;
+}
+
+nav .language-select:hover .dropdown {
+    display: block;
+}
+
+nav .language-select .dropdown li {
+    padding: 10px;
+}
+
+nav .language-select .dropdown li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 8px;
+}
+
+nav .language-select .dropdown li a:hover {
+    background-color: #7c8995;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+nav .nav-links.show {
+    display: block;
+}
+
+nav .nav-links {
+    display: flex;
+}
+
+/* Hero Section */
+.hero {
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 100px 20px;
+    margin-bottom: 40px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.hero p {
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 100px;
+}
+
+.cta-button {
+    background-color: #00cc66;
+    color: rgb(0, 0, 0);
+    padding: 20px 40px;
+    font-size: 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #00994d;
+}
+
+/* Quote Section */
+.quote {
+    font-size: 1.5rem;
+    margin: 40px auto;
+    font-style: italic;
+    max-width: 800px;
+}
+
+/* Roadmap Section */
+.roadmap {
+    padding: 50px 20px;
+    background-color: #fffafa;
+    text-align: center;
+}
+
+.roadmap h2 {
+    margin-bottom: 20px;
+}
+
+.roadmap p {
+    font-size: 18px;
+}
+
+/* Learning Flow Section */
+.learning-flow {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.learning-flow h2 {
+    margin-bottom: 20px;
+}
+
+.learning-flow ul {
+    list-style-type: none;
+    font-size: 18px;
+}
+
+.learning-flow ul li {
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    nav .nav-links {
+        display: none;
+        width: 100%;
+        text-align: center;
+        background-color: #0044cc;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+    }
+
+    nav .nav-links li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav .hamburger {
+        display: block;
+    }
+
+    nav .language-select {
+        display: block;
+        margin: 10px 0;
+    }
+	
+	nav .language-select {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav .language-select a {
+        color: white;
+    }
+
+    .nav-links.show {
+        display: block;
+    }
+}
+
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 800px;
+}
+
+.hero img {
+    flex: 1;
+    max-width: 500px;
+    height: auto;
+    object-fit: contain;
+}
+
+
+
+    
+
+

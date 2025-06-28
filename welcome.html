@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page Transitions with Buttons</title>
+  <link rel="stylesheet" href="wel_style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script>
+const translations = {
+  english: {
+    chooseLanguage: "Choose Your Language",
+    languageYouKnow: "Language you know",
+    languageToLearn: "Language to learn",
+    selectProficiency: "Select Your Proficiency Level",
+    inLanguage: "In",
+    timeDedication: "How much time can you dedicate?",
+    forLearning: "For learning",
+    quickQuiz: "Quick Language Quiz",
+    translationQuestion: "What is the translation of 'Hello' in Spanish?",
+    quizCompleted: "Quiz Completed!",
+    yourScore: "Your Score:",
+    greatJob: "Great job! You’re making excellent progress in your language learning journey.",
+    continueLearning: "Continue Learning",
+    goToHomepage: "Go to Homepage",
+    welcome: "Welcome",
+    startLearning: "Start Learning"
+  },
+  urdu: {
+    chooseLanguage: "اپنی زبان منتخب کریں",
+    languageYouKnow: "آپ کون سی زبان جانتے ہیں",
+    languageToLearn: "آپ کون سی زبان سیکھنا چاہتے ہیں",
+    selectProficiency: "اپنی مہارت کی سطح منتخب کریں",
+    inLanguage: "میں",
+    timeDedication: "آپ کتنا وقت سیکھنے کے لیے دے سکتے ہیں؟",
+    forLearning: "سیکھنے کے لیے",
+    quickQuiz: "فوری زبان کا کوئز",
+    translationQuestion: "Hello کا ہسپانوی میں ترجمہ کیا ہے؟",
+    quizCompleted: "کوئز مکمل ہو گیا!",
+    yourScore: "آپ کا اسکور:",
+    greatJob: "بہت خوب! آپ زبان سیکھنے کے سفر میں زبردست پیشرفت کر رہے ہیں۔",
+    continueLearning: "سیکھنا جاری رکھیں",
+    goToHomepage: "ہوم پیج پر جائیں",
+    welcome: "خوش آمدید",
+    startLearning: "سیکھنا شروع کریں"
+  }
+  // Add Punjabi and Sindhi if needed
+};
+</script>
+
+</head>
+<body>
+<div class="page" style="background-color:#38a8cc">
+    <h1>Choose Your Language</h1>
+    <form>
+            <!-- Known Language -->
+            <div class="form-outline mb-4">
+              <select class="form-select" id="knownLanguage">
+                <option selected disabled>Language you know</option>
+                <option value="english">English</option>
+                <option value="urdu">Urdu</option>
+                <option value="punjabi">Punjabi</option>
+                <option value="sindhi">Sindhi</option>
+              </select>
+              <label class="form-label" for="knownLanguage">Language you know</label>
+            </div>
+
+            <!-- Learning Language -->
+            <div class="form-outline mb-4">
+              <select class="form-select" id="learnLanguage">
+                <option selected disabled>Language you want to learn</option>
+                <option value="english">English</option>
+                <option value="urdu">Urdu</option>
+                <option value="punjabi">French</option>
+                <option value="sindhi">Spanish</option>
+              </select>
+              <label class="form-label" for="learnLanguage">Language to learn</label>
+            </div>
+          </form>
+    <button class="next-btn">Next Page</button>
+  </div>
+  
+  <div class="page" style="background-color:#004444">
+    <h1>Select Your Proficiency Level</h1>
+    <p class="mb-4" id="languageText"> <strong><span id="selectedLanguage"></span></strong></p>
+
+          <div class="level-container">
+            <button class="btn btn-outline-primary btn-level" onclick="selectLevel('basic')">Basic</button>
+            <button class="btn btn-outline-primary btn-level" onclick="selectLevel('intermediate')">Intermediate</button>
+          </div>
+    <button class="next-btn">Next Page</button>
+  </div>
+  <div class="page" style="background-color:#884444">
+    <h1>How much time can you dedicate?</h1>
+    <p class="mb-4">For learning <strong><span id="selectedLanguage"></span></strong></p>
+
+          <div class="time-options">
+            <button class="btn btn-outline-success btn-time" onclick="selectTime('5 min or more a day')">5 min or more a day</button>
+            <button class="btn btn-outline-success btn-time" onclick="selectTime('30 min or more a day')">30 min or more a day</button>
+            <button class="btn btn-outline-success btn-time" onclick="selectTime('1 hour or more a day')">1 hour or more a day</button>
+            <button class="btn btn-outline-success btn-time" onclick="selectTime('A few hours a week')">A few hours a week</button>
+            <button class="btn btn-outline-success btn-time" onclick="selectTime('1 day a week')">1 day a week</button>
+          </div>
+    <button class="next-btn">Next Page</button>
+  </div>
+  <div class="page" style="background-color:#555588">
+    <h1>Quick Language Quiz</h1>
+    <div class="question mb-3" id="question">What is the translation of "Hello" in Spanish?</div>
+          <div id="options">
+            <div class="option" onclick="selectOption(this, 'Hola')">Hola</div>
+            <div class="option" onclick="selectOption(this, 'Bonjour')">Bonjour</div>
+            <div class="option" onclick="selectOption(this, 'Ciao')">Ciao</div>
+            <div class="option" onclick="selectOption(this, 'Hallo')">Hallo</div>
+          </div>
+          <button class="btn btn-success submit-btn" onclick="checkAnswer()">Submit</button>
+          <div class="result text-success" id="result">Correct!</div>
+          <div class="result text-danger" id="wrong">Wrong! Try again.</div>
+    <button class="next-btn">Next Page</button>
+  </div>
+  <div class="page" style="background-color:#555588">
+    <h1>Quiz Completed!</h1>
+    <h4 class="mb-3">Your Score:</h4>
+          <div class="display-3 fw-bold text-primary mb-4" id="quizScore">8 / 10</div>
+
+          <p class="mb-4">Great job! You’re making excellent progress in your language learning journey.</p>
+
+          <div class="d-grid gap-2">
+            <a href="learn.html" class="btn btn-success btn-lg">Continue Learning</a>
+            <a href="index.html" class="btn btn-outline-primary">Go to Homepage</a>
+          </div>
+    <button class="next-btn">Next Page</button>
+  </div>
+  <div class="page" style="background-color:#a84466">
+    <h1>Welcome</h1>
+    <button class="next-btn">Start Learning</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

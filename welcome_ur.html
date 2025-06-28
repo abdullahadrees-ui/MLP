@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>بٹنوں کے ساتھ صفحے کی منتقلی</title>
+  <link rel="stylesheet" href="wel_style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+<body>
+
+  <div class="page" style="background-color:#38a8cc">
+  <h1>اپنی زبان منتخب کریں</h1>
+  <form>
+    <!-- Known Language -->
+    <div class="form-outline mb-4">
+      <select class="form-select" id="knownLanguage">
+        <option selected disabled>آپ کون سی زبان جانتے ہیں</option>
+        <option value="english">انگریزی</option>
+        <option value="urdu">اردو</option>
+        <option value="punjabi">پنجابی</option>
+        <option value="sindhi">سندھی</option>
+      </select>
+      <label class="form-label" for="knownLanguage">آپ کون سی زبان جانتے ہیں</label>
+    </div>
+
+    <!-- Learning Language -->
+    <div class="form-outline mb-4">
+      <select class="form-select" id="learnLanguage">
+        <option selected disabled>آپ کون سی زبان سیکھنا چاہتے ہیں</option>
+        <option value="english">انگریزی</option>
+        <option value="urdu">اردو</option>
+        <option value="punjabi">فرانسیسی</option>
+        <option value="sindhi">ہسپانوی</option>
+      </select>
+      <label class="form-label" for="learnLanguage">سیکھنے کی زبان</label>
+    </div>
+  </form>
+  <button class="next-btn">اگلا صفحہ</button>
+</div>
+
+<div class="page" style="background-color:#004444">
+  <h1>اپنی مہارت کی سطح منتخب کریں</h1>
+  <p class="mb-4" id="languageText">زبان: <strong><span id="selectedLanguage">[زبان]</span></strong></p>
+
+  <div class="level-container">
+    <button class="btn btn-outline-primary btn-level" onclick="selectLevel('basic')">بنیادی</button>
+    <button class="btn btn-outline-primary btn-level" onclick="selectLevel('intermediate')">درمیانی</button>
+  </div>
+  <button class="next-btn">اگلا صفحہ</button>
+</div>
+
+  
+  <div class="page" style="background-color:#884444">
+    <h1>آپ کتنا وقت دے سکتے ہیں؟</h1>
+    <p class="mb-4">سیکھنے کے لیے <strong><span id="selectedLanguage">[زبان]</span></strong></p>
+
+    <div class="time-options">
+      <button class="btn btn-outline-success btn-time" onclick="selectTime('5 min or more a day')">روزانہ 5 منٹ یا زیادہ</button>
+      <button class="btn btn-outline-success btn-time" onclick="selectTime('30 min or more a day')">روزانہ 30 منٹ یا زیادہ</button>
+      <button class="btn btn-outline-success btn-time" onclick="selectTime('1 hour or more a day')">روزانہ 1 گھنٹہ یا زیادہ</button>
+      <button class="btn btn-outline-success btn-time" onclick="selectTime('A few hours a week')">ہفتے میں چند گھنٹے</button>
+      <button class="btn btn-outline-success btn-time" onclick="selectTime('1 day a week')">ہفتے میں ایک دن</button>
+    </div>
+    <button class="next-btn">اگلا صفحہ</button>
+  </div>
+  <div class="page" style="background-color:#555588">
+    <h1>فوری زبان کوئز</h1>
+    <div class="question mb-3" id="question">"Hello" کا ہسپانوی میں ترجمہ کیا ہے؟</div>
+    <div id="options">
+      <div class="option" onclick="selectOption(this, 'Hola')">Hola</div>
+      <div class="option" onclick="selectOption(this, 'Bonjour')">Bonjour</div>
+      <div class="option" onclick="selectOption(this, 'Ciao')">Ciao</div>
+      <div class="option" onclick="selectOption(this, 'Hallo')">Hallo</div>
+    </div>
+    <button class="btn btn-success submit-btn" onclick="checkAnswer()">جمع کروائیں</button>
+    <div class="result text-success" id="result">درست!</div>
+    <div class="result text-danger" id="wrong">غلط! دوبارہ کوشش کریں۔</div>
+    <button class="next-btn">اگلا صفحہ</button>
+  </div>
+  <div class="page" style="background-color:#555588">
+    <h1>کوئز مکمل ہوگیا!</h1>
+    <h4 class="mb-3">آپ کا اسکور:</h4>
+    <div class="display-3 fw-bold text-primary mb-4" id="quizScore">8 / 10</div>
+
+    <p class="mb-4">بہت خوب! آپ زبان سیکھنے کے سفر میں بہترین پیش رفت کر رہے ہیں۔</p>
+
+    <div class="d-grid gap-2">
+      <a href="learn.html" class="btn btn-success btn-lg">سیکھنا جاری رکھیں</a>
+      <a href="index.html" class="btn btn-outline-primary">ہوم پیج پر جائیں</a>
+    </div>
+    <button class="next-btn">اگلا صفحہ</button>
+  </div>
+  <div class="page" style="background-color:#a84466">
+    <h1>خوش آمدید</h1>
+    <button class="next-btn">سیکھنا شروع کریں</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

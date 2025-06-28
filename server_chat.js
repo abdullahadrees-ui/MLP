@@ -7,7 +7,8 @@ app.use(cors());
 app.use(express.json());
 
 const openai = new OpenAI({
-  apiKey: "YOUR_API_KEY", // Get this from https://platform.openai.com/account/api-keys
+  apiKey: "sk-...KLEA" // your actual key
+ // Get this from https://platform.openai.com/account/api-keys
 });
 
 app.post("/chat", async (req, res) => {

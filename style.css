@@ -146,7 +146,7 @@ nav .nav-links {
 }
 
 .cta-button {
-    background-color: #00cc66;
+    background-color: #bcbdbc;
     color: rgb(0, 0, 0);
     padding: 20px 40px;
     font-size: 20px;
@@ -156,7 +156,7 @@ nav .nav-links {
 }
 
 .cta-button:hover {
-    background-color: #00994d;
+    background-color: #c1c1c1;
 }
 
 /* Quote Section */
